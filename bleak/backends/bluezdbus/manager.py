@@ -413,6 +413,7 @@ class BlueZManager:
             self._device_removed_callbacks.append(device_removed_callback_and_state)
 
             try:
+                '''
                 # Apply the filters
                 reply = await self._bus.call(
                     Message(
@@ -425,6 +426,7 @@ class BlueZManager:
                     )
                 )
                 assert_reply(reply)
+                '''
 
                 # Start scanning
                 reply = await self._bus.call(
@@ -462,6 +464,8 @@ class BlueZManager:
                             if ex.dbus_error != "org.bluez.Error.NotReady":
                                 raise
                         else:
+                            pass
+                            '''
                             # remove the filters
                             reply = await self._bus.call(
                                 Message(
@@ -474,6 +478,7 @@ class BlueZManager:
                                 )
                             )
                             assert_reply(reply)
+                            '''
 
                 return stop
             except BaseException:
